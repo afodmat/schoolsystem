@@ -20,7 +20,7 @@ class Student extends Model
         'student_number',
         'course',
         'year',
-        'semester'
+        'semester',
         'age',
         'enrollment_date',
         'is_enrolled',
