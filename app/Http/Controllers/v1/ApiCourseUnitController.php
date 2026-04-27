@@ -16,8 +16,8 @@ class ApiCourseUnitController extends Controller
     }
 
     public function store(CourseUnitRequest $request){
-        $attributes = $request->validated();
-        CourseUnit::create($attributes);
+        $attributes = CourseUnit::create($request->validated());
+        
         return new CourseUnitResource($attributes);
     }
 
@@ -27,8 +27,8 @@ class ApiCourseUnitController extends Controller
     }
 
     public function update(CourseUnitRequest $request){
-        $attribute = $request->validated();
-        CourseUnit::update($attribute);
+        $attribute = CourseUnit::update($request->validated());
+        
         return new CourseUnitResource($attribute);
     }
 

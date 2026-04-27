@@ -18,12 +18,14 @@ class ApiCourseController extends Controller
     public function store(Request $request){
         $validated = $request->validate([
             'course_name' => 'required',
-            'duration'=>'required'
+            'duration'=>'required',
+            'fees'=>'required|number'
         ]);
 
         Course::create([
             'course_name' => $validated['course_name'],
-            'duration' => $validated['duration']
+            'duration' => $validated['duration'],
+            'fees'=>'required|number'
         ]);
         
         return response()->json([
@@ -39,12 +41,14 @@ class ApiCourseController extends Controller
     public function update(Request $request){
         $validated = $request->validate([
             'course_name' => 'required',
-            'duration'=>'required'
+            'duration'=>'required',
+            'fees' => $validated['fees']
         ]);
 
         Course::update([
             'course_name' => $validated['course_name'],
-            'duration' => $validated['duration']
+            'duration' => $validated['duration'],
+            'fees' => $validated['fees']
         ]);
         
         return response()->json([

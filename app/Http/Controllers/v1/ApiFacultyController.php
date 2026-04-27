@@ -16,8 +16,8 @@ class ApiFacultyController extends Controller
     }
 
     public function store(FacultyRequest $request){
-        $faculty = $request->validated();
-        Faculty::create($faculty);
+        $faculty = Faculty::create($request->validated());
+         
         return new  FacultyResponse($faculty);
     }
 
@@ -27,8 +27,8 @@ class ApiFacultyController extends Controller
     }
 
     public function update(Request $request){
-        $faculty = $request->validated();
-        Faculty::update($faculty);
+        $faculty = Faculty::update($request->validated());
+        
         return new FacultyResponse($faculty);
 
     }

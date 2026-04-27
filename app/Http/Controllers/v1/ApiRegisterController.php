@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v1;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\v1\StoreUserRequest;
-
-class RegisterController extends Controller
+class ApiRegisterController extends Controller
 {
     
 

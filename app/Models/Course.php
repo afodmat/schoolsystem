@@ -15,6 +15,12 @@ class Course extends Model
     protected $fillable = [
         'course_name',
         'duration',
-        'faculty_id'
+        'faculty_id',
+        'fees'
     ];
+
+     public function students()
+    {
+        return $this->hasMany(Student::class, 'course_id');
+    }
 }

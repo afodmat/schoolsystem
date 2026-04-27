@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 
 class Student extends Model
 {
-    use  HasFactory, SoftDeletes;
+    use  HasFactory,HasApiTokens,Notifiable, SoftDeletes;
     protected $fillable = [
         'first_name',
         'last_name',
@@ -18,20 +20,21 @@ class Student extends Model
         'date_of_birth',
         'gender',
         'student_number',
-        'course',
-        'year',
-        'semester',
+        'nin_number',
         'age',
         'enrollment_date',
         'is_enrolled',
-        'city',
-        'district',
-        'country',
+        'address',
+        'nationality',
+        'course_id',
         'guardian_name',
         'guardian_contact',
         'guardian_relationship',
-        'photo_url',
-        'is_active'
+        'guardian_address',
+        'admission_year',
+        'study_mode',
+        'academic_status',
+        'photo_url'
     ];
     
     protected static function booted()
@@ -58,5 +61,21 @@ class Student extends Model
         return "STD-{$year}-{$newNumber}";
     }
 
+     public function course()
+    {
+        return $this->belongsTo(Course::class, 'Course_id');
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
+
+    public function admission()
+    {
+        return $this->belongsTo(Admission::class);
+    }
+
    
 }
+
